@@ -10,16 +10,24 @@ jobs:
   runscript:
     name: GetIP
     runs-on: ubuntu-latest
+    
+    # ۱. افزودن دسترسی نوشتن به ریپازیتوری برای این جاب
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Code
-        uses: actions/checkout@main
+        # ۲. استفاده از نسخه مشخص برای پایداری بیشتر
+        uses: actions/checkout@v4
 
-      - name: Call a Bash Script
+      - name: ایجاد لیست، کامیت و پوش کردن تغییرات
         run: |
           bash get.sh > list.rsc
-          git config --global user.email "219509611+elyasmankan@users.noreply.github.com"
+          git config --global user.email "elyasmankan@users.noreply.github.com"
           git config --global user.name "elyasmankan"
-          git config credential.helper store
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Automatic update"
-          git push -f
+          git add list.rsc
+          # فقط در صورتی که تغییری وجود داشته باشد، کامیت انجام می‌شود
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Automatic update"
+            git push
+          fi
