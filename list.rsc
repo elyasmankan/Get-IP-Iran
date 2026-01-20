@@ -1,4 +1,4 @@
-#Last update: Tue Jan 20 15:37:59 UTC 2026
+#Last update: Tue Jan 20 18:56:35 UTC 2026
 /ip firewall address-list remove [/ip firewall address-list find list=IRAN]
 /ip firewall address-list
 :do { add address=2.57.3.0/24 list=IRAN} on-error={}
@@ -1682,6 +1682,7 @@
 :do { add address=193.189.122.0/23 list=IRAN} on-error={}
 :do { add address=193.200.102.0/23 list=IRAN} on-error={}
 :do { add address=193.200.148.0/24 list=IRAN} on-error={}
+:do { add address=193.201.23.0/24 list=IRAN} on-error={}
 :do { add address=193.201.66.0/24 list=IRAN} on-error={}
 :do { add address=193.201.72.0/23 list=IRAN} on-error={}
 :do { add address=193.201.192.0/22 list=IRAN} on-error={}
